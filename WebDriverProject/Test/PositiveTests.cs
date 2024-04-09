@@ -19,7 +19,7 @@ public class PositiveTests : BaseTest
             Configurator.ReadConfiguration().PasswordSauceDemo);
 
 
-        //ProductsPage.OpenPageByUrl();
+        ProductsPage.OpenPageByUrl();
         Assert.That(ProductsPage.ProductsTitle().Displayed, Is.True);
     }
 }

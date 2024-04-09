@@ -15,8 +15,8 @@ public abstract class BasePage
 
     public abstract string GetEndpoint();
 
-    public void OpenPageByUrl(string endPoint)
+    public void OpenPageByUrl()
     {
-        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl + endPoint);
+        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl + GetEndpoint());
     }
 }
