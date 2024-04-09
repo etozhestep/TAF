@@ -16,7 +16,7 @@ public class Browser
             _ => throw new NotSupportedException("This browser type didn't find")
         };
 
-        Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Configurator.ReadConfiguration().TimeOut);
+        Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
         //Driver.Manage().Window.Maximize();
     }
 }
