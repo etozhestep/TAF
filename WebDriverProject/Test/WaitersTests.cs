@@ -34,14 +34,14 @@ public class WaitersTests : BaseTest
         var button = Driver.FindElement(By.XPath("//*[.='Start']"));
         button.Click();
 
-        _waitsHelper.WaitForElementInvisible(button);
+        WaitsHelper.WaitForElementInvisible(button);
         Assert.That(button.Displayed, Is.False);
 
 
-        var loading = _waitsHelper.WaitForVisibility(By.Id("loading"));
+        var loading = WaitsHelper.WaitForVisibility(By.Id("loading"));
         Assert.That(loading.Displayed, Is.True);
 
-        _waitsHelper.WaitForElementInvisible(loading);
+        WaitsHelper.WaitForElementInvisible(loading);
         Assert.That(loading.Displayed, Is.False);
 
         Assert.That(Driver.FindElement(By.Id("finish")).Displayed);
