@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using Allure.Net.Commons;
+using Allure.NUnit;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using WebDriverProject.Core;
 using WebDriverProject.Pages;
@@ -6,15 +8,16 @@ using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
+[TestFixture]
 [Parallelizable(ParallelScope.Fixtures)]
+[AllureNUnit]
 public class BaseTest
 {
-    public IWebDriver Driver { get; set; }
-    public LoginPage LoginPage { get; set; }
-    public ProductsPage ProductsPage { get; set; }
-    public WaitsHelper? WaitsHelper { get; set; }
-    public Actions Actions { get; set; }
-    public IJavaScriptExecutor Js { get; set; }
+    [OneTimeSetUp]
+    public void GlobalSetUp()
+    {
+        AllureLifecycle.Instance.CleanupResultDirectory();
+    }
 
     [SetUp]
     public void Setup()
@@ -32,4 +35,11 @@ public class BaseTest
     {
         Driver.Dispose();
     }
+
+    public IWebDriver Driver { get; set; }
+    public LoginPage LoginPage { get; set; }
+    public ProductsPage ProductsPage { get; set; }
+    public WaitsHelper? WaitsHelper { get; set; }
+    public Actions Actions { get; set; }
+    public IJavaScriptExecutor Js { get; set; }
 }

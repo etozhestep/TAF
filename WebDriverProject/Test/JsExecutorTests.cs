@@ -1,5 +1,4 @@
-﻿using AngleSharp.Html;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;

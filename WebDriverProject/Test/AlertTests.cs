@@ -3,12 +3,13 @@ using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
+[TestFixture]
 public class AlertTests : BaseTest
 {
     [SetUp]
     public void OpenHerokuApp()
     {
-        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().HerokuappUrl+ "javascript_alerts");
+        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().HerokuappUrl + "javascript_alerts");
     }
 
     [Test]
@@ -19,7 +20,7 @@ public class AlertTests : BaseTest
 
         var alert = Driver.SwitchTo().Alert();
 
-        Assert.That(alert.Text.Trim(),Is.EqualTo("I am a JS Alert"));
+        Assert.That(alert.Text.Trim(), Is.EqualTo("I am a JS Alert"));
     }
 
     [Test]
@@ -31,7 +32,7 @@ public class AlertTests : BaseTest
         var alert = Driver.SwitchTo().Alert();
         alert.Accept();
         var resultText = Driver.FindElement(By.Id("result")).Text.Trim();
-        Assert.That(resultText,Is.EqualTo("You clicked: Ok"));
+        Assert.That(resultText, Is.EqualTo("You clicked: Ok"));
     }
 
     [Test]
@@ -43,7 +44,7 @@ public class AlertTests : BaseTest
         var alert = Driver.SwitchTo().Alert();
         alert.Dismiss();
         var resultText = Driver.FindElement(By.Id("result")).Text.Trim();
-        Assert.That(resultText,Is.EqualTo("You clicked: Cancel"));
+        Assert.That(resultText, Is.EqualTo("You clicked: Cancel"));
     }
 
     [Test]
