@@ -1,19 +1,24 @@
-﻿using OpenQA.Selenium;
+﻿using NLog;
+using OpenQA.Selenium;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
 public class WaitersTests : BaseTest
 {
+    private Logger logger;
+
     [SetUp]
     public void OpenSite()
     {
         Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().HerokuappUrl + "dynamic_loading/1");
+        logger = LogManager.GetCurrentClassLogger();
     }
 
     [Test]
     public void WaitForHelloWorld()
     {
+       
         var button = Driver.FindElement(By.XPath("//*[.='Start']"));
         button.Click();
 
@@ -29,6 +34,10 @@ public class WaitersTests : BaseTest
     [Test]
     public void ExplicitWaitForHelloWorld()
     {
+        logger.Info("Log info");
+        logger.Debug("Log debug");
+        logger.Error("Log error");
+        logger.Fatal("Log fatal");
         var button = Driver.FindElement(By.XPath("//*[.='Start']"));
         button.Click();
 

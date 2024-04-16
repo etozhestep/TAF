@@ -1,4 +1,6 @@
-﻿using OpenQA.Selenium;
+﻿using Allure.Net.Commons;
+using Allure.NUnit.Attributes;
+using OpenQA.Selenium;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Pages;
@@ -29,6 +31,7 @@ public class LoginPage : BasePage
     public IWebElement LoginButton() => Driver.FindElement(LoginButtonBy);
     public IWebElement ErrorTitle() => Driver.FindElement(ErrorTitleBy);
 
+    [AllureStep]
     public ProductsPage SuccessfulLogin(string userName, string password)
     {
         UserNameField().SendKeys(userName);
@@ -37,6 +40,7 @@ public class LoginPage : BasePage
         return new ProductsPage(Driver);
     }
 
+    [AllureStep]
     public void Login(string userName = "", string password = "")
     {
         UserNameField().SendKeys(userName);
