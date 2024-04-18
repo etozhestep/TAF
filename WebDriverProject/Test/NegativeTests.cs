@@ -1,4 +1,5 @@
-﻿using WebDriverProject.Utils;
+﻿using NLog;
+using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
@@ -8,7 +9,15 @@ public class NegativeTests : BaseTest
     [SetUp]
     public void Setup()
     {
-        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
+        try
+        {
+            Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
+        }
+        catch (Exception e)
+        {
+           logger.Error(e,"Невозможно перейти на сайт");
+            throw;
+        }
     }
 
     [Test]

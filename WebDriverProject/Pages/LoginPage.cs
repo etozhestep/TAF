@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using WebDriverProject.Utils;
 
 namespace WebDriverProject.Pages;
 
@@ -9,7 +8,7 @@ public class LoginPage : BasePage
     private static readonly By PasswordFieldBy = By.CssSelector("[placeholder='Password']");
     private static readonly By LoginButtonBy = By.CssSelector(".submit-button.btn_action");
     private static readonly By ErrorTitleBy = By.TagName("h3");
-    private string _endPoint = "";
+    private readonly string _endPoint = "";
 
 
     public LoginPage(IWebDriver driver) : base(driver)
@@ -24,10 +23,25 @@ public class LoginPage : BasePage
         return _endPoint;
     }
 
-    public IWebElement UserNameField() => Driver.FindElement(UserNameFieldBy);
-    public IWebElement PasswordField() => Driver.FindElement(PasswordFieldBy);
-    public IWebElement LoginButton() => Driver.FindElement(LoginButtonBy);
-    public IWebElement ErrorTitle() => Driver.FindElement(ErrorTitleBy);
+    public IWebElement UserNameField()
+    {
+        return Driver.FindElement(UserNameFieldBy);
+    }
+
+    public IWebElement PasswordField()
+    {
+        return Driver.FindElement(PasswordFieldBy);
+    }
+
+    public IWebElement LoginButton()
+    {
+        return Driver.FindElement(LoginButtonBy);
+    }
+
+    public IWebElement ErrorTitle()
+    {
+        return Driver.FindElement(ErrorTitleBy);
+    }
 
     public ProductsPage SuccessfulLogin(string userName, string password)
     {
