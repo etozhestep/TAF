@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using WebDriverProject.Element;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Pages;
@@ -24,7 +25,7 @@ public class LoginPage : BasePage
         return _endPoint;
     }
 
-    public IWebElement UserNameField() => Driver.FindElement(UserNameFieldBy);
+    public UiElement UserNameField() => new UiElement(Driver, UserNameFieldBy);
     public IWebElement PasswordField() => Driver.FindElement(PasswordFieldBy);
     public IWebElement LoginButton() => Driver.FindElement(LoginButtonBy);
     public IWebElement ErrorTitle() => Driver.FindElement(ErrorTitleBy);

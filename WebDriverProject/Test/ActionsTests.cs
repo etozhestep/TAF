@@ -7,6 +7,13 @@ namespace WebDriverProject.Test;
 public class ActionsTests : BaseTest
 {
     [Test]
+    public void Wrappers()
+    {
+        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
+        LoginPage.UserNameField().SendKeys("1234");
+    }
+
+    [Test]
     public void HoverTest()
     {
         Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().HerokuappUrl + "hovers");
