@@ -10,10 +10,10 @@ public class WaitsHelper
     private WebDriverWait _wait;
     private TimeSpan _timeout { get; set; }
 
-    public WaitsHelper(IWebDriver driver,TimeSpan timeout)
+    public WaitsHelper(IWebDriver driver)
     {
         this.driver = driver;
-        _timeout = timeout;
+        _timeout = TimeSpan.FromSeconds(Configurator.ReadConfiguration().TimeOut);
         _wait = new WebDriverWait(driver, _timeout);
     }
 
@@ -21,10 +21,12 @@ public class WaitsHelper
     {
         return _wait.Until(ExpectedConditions.ElementIsVisible(locator));
     }
+
     public bool WaitForElementInvisible(By locator)
     {
         return _wait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
     }
+
     public bool WaitForElementInvisible(IWebElement element)
     {
         try
@@ -40,6 +42,15 @@ public class WaitsHelper
         {
             throw new WebDriverTimeoutException($"Element visible after {_timeout} seconds");
         }
-        
+    }
+
+    public IWebElement WaitForExist(By locator)
+    {
+        return _wait.Until(ExpectedConditions.ElementExists(locator));
+    }
+
+    public IReadOnlyCollection<IWebElement> WaitForElementsPresence(By locator)
+    {
+        return _wait.Until(ExpectedConditions.PresenceOfAllElementsLocatedBy(locator));
     }
 }

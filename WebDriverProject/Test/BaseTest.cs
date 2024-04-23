@@ -22,7 +22,7 @@ public class BaseTest
         Driver = new Browser().Driver;
         LoginPage = new LoginPage(Driver);
         ProductsPage = new ProductsPage(Driver);
-        WaitsHelper = new WaitsHelper(Driver, TimeSpan.FromSeconds(Configurator.ReadConfiguration().TimeOut));
+        WaitsHelper = new WaitsHelper(Driver);
         Actions = new Actions(Driver);
         Js = (IJavaScriptExecutor)Driver;
     }

@@ -2,6 +2,7 @@
 using System.Drawing;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using WebDriverProject.Utils;
 
 namespace WebDriverProject.Element;
 
@@ -10,11 +11,13 @@ public class UiElement : IWebElement
     private readonly Actions _actions;
     private readonly IWebDriver _driver;
     private readonly IWebElement _element;
+    private readonly WaitsHelper _waitsHelper;
 
     private UiElement(IWebDriver driver)
     {
         _driver = driver;
         _actions = new Actions(driver);
+        _waitsHelper = new WaitsHelper(driver);
     }
 
     public UiElement(IWebDriver driver, IWebElement element) : this(driver)
@@ -24,7 +27,7 @@ public class UiElement : IWebElement
 
     public UiElement(IWebDriver driver, By locator) : this(driver)
     {
-        _element = driver.FindElement(locator);
+        _element = _waitsHelper.WaitForExist(locator);
     }
 
     public IWebElement FindElement(By by)
@@ -34,7 +37,7 @@ public class UiElement : IWebElement
 
     public ReadOnlyCollection<IWebElement> FindElements(By by)
     {
-        throw new NotImplementedException();
+        return _element.FindElements(by);
     }
 
     public void Clear()
@@ -118,7 +121,22 @@ public class UiElement : IWebElement
 
 
     public string TagName => _element.TagName;
-    public string Text { get; }
+
+    public string Text
+    {
+        get
+        {
+            if (_element.Text == null)
+            {
+                if (GetAttribute("value") == null)
+                    return GetAttribute("innerText");
+                return GetAttribute("value");
+            }
+
+            return _element.Text;
+        }
+    }
+
     public bool Enabled => _element.Enabled;
     public bool Selected => _element.Selected;
     public Point Location => _element.Location;

@@ -27,7 +27,7 @@ public class LoginPage : BasePage
 
     public UiElement UserNameField() => new UiElement(Driver, UserNameFieldBy);
     public IWebElement PasswordField() => Driver.FindElement(PasswordFieldBy);
-    public IWebElement LoginButton() => Driver.FindElement(LoginButtonBy);
+    public Button LoginButton() => new Button(Driver, LoginButtonBy);
     public IWebElement ErrorTitle() => Driver.FindElement(ErrorTitleBy);
 
     public ProductsPage SuccessfulLogin(string userName, string password)
