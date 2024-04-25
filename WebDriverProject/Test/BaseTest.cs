@@ -18,6 +18,7 @@ public class BaseTest
     public NavigationStep NavigationStep { get; set; }
 
     [SetUp]
+    [AllureBefore("Set up driver")]
     public void Setup()
     {
         Driver = new Browser().Driver;
