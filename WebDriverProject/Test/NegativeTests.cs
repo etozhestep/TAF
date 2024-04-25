@@ -7,7 +7,7 @@ namespace WebDriverProject.Test;
 public class NegativeTests : BaseTest
 {
     [SetUp]
-    public void Setup()
+    public void GoToUrl()
     {
         Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
     }
