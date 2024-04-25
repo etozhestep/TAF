@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using WebDriverProject.Element;
 
 namespace WebDriverProject.Pages;
 
@@ -19,5 +20,5 @@ public class ProductsPage : BasePage
         Driver = driver;
     }
 
-    public IWebElement ProductsTitle() => Driver.FindElement(ProductsTitleBy);
+    public UiElement ProductsTitle() => new(Driver, ProductsTitleBy);
 }
