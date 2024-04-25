@@ -1,12 +1,16 @@
-﻿using OpenQA.Selenium;
+﻿using Allure.Net.Commons;
+using Allure.NUnit;
+using Allure.NUnit.Attributes;
+using NUnit.Framework.Interfaces;
+using OpenQA.Selenium;
 using WebDriverProject.Core;
-using WebDriverProject.Pages;
 using WebDriverProject.Steps;
 
 namespace WebDriverProject.Test;
 
 [Parallelizable(ParallelScope.All)]
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
+[AllureNUnit]
 public class BaseTest
 {
     public IWebDriver Driver { get; set; }
@@ -22,8 +26,16 @@ public class BaseTest
     }
 
     [TearDown]
+    [AllureAfter("Driver quite")]
     public void TearDown()
     {
+        if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+        {
+            var screenshotByte = ((ITakesScreenshot)Driver).GetScreenshot().AsByteArray;
+            AllureApi.AddAttachment("screenshot", "image/png", screenshotByte);
+        }
+
+
         Driver.Dispose();
     }
 }
