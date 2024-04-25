@@ -5,7 +5,12 @@ namespace WebDriverProject.Pages;
 public class ProductsPage : BasePage
 {
     private static readonly By ProductsTitleBy = By.XPath("//*[.='Products']");
-    private string _endPoint = "inventory.html";
+    private readonly string _endPoint = "inventory.html";
+
+    public ProductsPage(IWebDriver driver) : base(driver)
+    {
+        Driver = driver;
+    }
 
     protected IWebDriver Driver { get; set; }
 
@@ -14,10 +19,13 @@ public class ProductsPage : BasePage
         return _endPoint;
     }
 
-    public ProductsPage(IWebDriver driver) : base(driver)
+    public IWebElement ProductsTitle()
     {
-        Driver = driver;
+        return Driver.FindElement(ProductsTitleBy);
     }
 
-    public IWebElement ProductsTitle() => Driver.FindElement(ProductsTitleBy);
+    protected override bool EvaluateLoadedStatus()
+    {
+        return ProductsTitle().Displayed;
+    }
 }
