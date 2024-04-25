@@ -1,41 +1,58 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.DevTools.V121.Audits;
+using WebDriverProject.Models;
+using WebDriverProject.Pages;
+using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
 [TestFixture]
 public class PositiveTests : BaseTest
 {
-    private const string Url = "https://www.saucedemo.com/";
-    private string userNameXpathLocator = "//input[@data-test='username']";
-    private string passwordCssLocator = "[placeholder='Password']";
-    private string loginButtonCssLocator = ".submit-button.btn_action";
-    private string productsTitleXpathLocator = "//*[.='Products']";
-
+    [SetUp]
+    public void Setup()
+    {
+        Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
+    }
 
     [Test]
     public void PositiveLogin()
     {
-        var standartUserName = "standard_user";
-        var password = "secret_sauce";
-        var expectedUrl = "https://www.saucedemo.com/inventory.html";
+        var admin = new UserModel()
+        {
+            UserName = Configurator.ReadConfiguration().UserNameSauceDemo,
+            Password = Configurator.ReadConfiguration().PasswordSauceDemo
+        };
 
-        Driver.Navigate().GoToUrl(Url);
-        var userNameField = Driver.FindElement(By.XPath(userNameXpathLocator));
-        var passwordField = Driver.FindElement(By.CssSelector(passwordCssLocator));
-        var loginButton = Driver.FindElement(By.CssSelector(loginButtonCssLocator));
+        Assert.That(UserStep.SuccessfulLogin(admin)
+            .ProductsTitle().Displayed, Is.True);
+    }
 
-        userNameField.SendKeys(standartUserName);
-        passwordField.SendKeys(password);
-        loginButton.Click();
 
-        var productTitle = Driver.FindElement(By.XPath(productsTitleXpathLocator));
+    [Test]
+    public void NavigateToProductsTest()
+    {
+        var admin = new UserModel()
+        {
+            UserName = Configurator.ReadConfiguration().UserNameSauceDemo,
+            Password = Configurator.ReadConfiguration().PasswordSauceDemo
+        };
 
-        Assert.Multiple(() =>
-            {
-                Assert.That(expectedUrl, Is.EqualTo(Driver.Url));
-                Assert.That(productTitle.Displayed, Is.True);
-            }
-        );
+        UserStep.SuccessfulLogin(admin).CartIcon().Click();
+
+        NavigationStep.NavigateToProductsPage();
+    }
+
+    [Test]
+    public void AddProjectTest()
+    {
+
+        var project = new ProjectModel()
+        {
+            Name = "ASciapaniuk_" + Guid.NewGuid(),
+            Announcement = "Test",
+            IsShowAnnouncement = true,
+            ProjectType = "Use a single repository with baseline support",
+            IsEnableTestCase = true
+        };
     }
 }
