@@ -13,10 +13,7 @@ public class LoginPage : BasePage
 
     public LoginPage(IWebDriver driver) : base(driver)
     {
-        Driver = driver;
     }
-
-    protected IWebDriver Driver { get; set; }
 
     public override string GetEndpoint()
     {
@@ -42,22 +39,6 @@ public class LoginPage : BasePage
     {
         return Driver.FindElement(ErrorTitleBy);
     }
-
-    public ProductsPage SuccessfulLogin(string userName, string password)
-    {
-        UserNameField().SendKeys(userName);
-        PasswordField().SendKeys(password);
-        LoginButton().Click();
-        return new ProductsPage(Driver);
-    }
-
-    public void Login(string userName = "", string password = "")
-    {
-        UserNameField().SendKeys(userName);
-        PasswordField().SendKeys(password);
-        LoginButton().Click();
-    }
-
 
     protected override bool EvaluateLoadedStatus()
     {

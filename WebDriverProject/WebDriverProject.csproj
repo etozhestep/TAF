@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
+    <Folder Include="Models\" />
     <Folder Include="Pages\" />
     <Folder Include="Test\" />
   </ItemGroup>

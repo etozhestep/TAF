@@ -1,4 +1,6 @@
-﻿using WebDriverProject.Pages;
+﻿using OpenQA.Selenium.DevTools.V121.Audits;
+using WebDriverProject.Models;
+using WebDriverProject.Pages;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
@@ -15,11 +17,42 @@ public class PositiveTests : BaseTest
     [Test]
     public void PositiveLogin()
     {
-        LoginPage.SuccessfulLogin(Configurator.ReadConfiguration().UserNameSauceDemo,
-            Configurator.ReadConfiguration().PasswordSauceDemo);
+        var admin = new UserModel()
+        {
+            UserName = Configurator.ReadConfiguration().UserNameSauceDemo,
+            Password = Configurator.ReadConfiguration().PasswordSauceDemo
+        };
+
+        Assert.That(UserStep.SuccessfulLogin(admin)
+            .ProductsTitle().Displayed, Is.True);
+    }
 
 
-        ProductsPage.Load();
-        Assert.That(ProductsPage.ProductsTitle().Displayed, Is.True);
+    [Test]
+    public void NavigateToProductsTest()
+    {
+        var admin = new UserModel()
+        {
+            UserName = Configurator.ReadConfiguration().UserNameSauceDemo,
+            Password = Configurator.ReadConfiguration().PasswordSauceDemo
+        };
+
+        UserStep.SuccessfulLogin(admin).CartIcon().Click();
+
+        NavigationStep.NavigateToProductsPage();
+    }
+
+    [Test]
+    public void AddProjectTest()
+    {
+
+        var project = new ProjectModel()
+        {
+            Name = "ASciapaniuk_" + Guid.NewGuid(),
+            Announcement = "Test",
+            IsShowAnnouncement = true,
+            ProjectType = "Use a single repository with baseline support",
+            IsEnableTestCase = true
+        };
     }
 }

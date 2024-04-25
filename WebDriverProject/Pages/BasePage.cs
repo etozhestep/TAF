@@ -9,11 +9,14 @@ public abstract class BasePage : LoadableComponent<BasePage>
     protected IWebDriver Driver { get; set; }
 
 
-    public BasePage(IWebDriver driver, bool openPageByUrl = false)
+    protected BasePage(IWebDriver driver, bool openPageByUrl = false)
     {
         Driver = driver;
         if (openPageByUrl)
+        {
+            //ExecuteLoad();
             Load();
+        }
     }
 
     public abstract string GetEndpoint();

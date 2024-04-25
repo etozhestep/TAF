@@ -1,4 +1,5 @@
-﻿using WebDriverProject.Utils;
+﻿using WebDriverProject.Models;
+using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
@@ -14,15 +15,23 @@ public class NegativeTests : BaseTest
     [Test]
     public void LoginWithoutPassword()
     {
-        LoginPage.Login(Configurator.ReadConfiguration().UserNameSauceDemo);
+        var userWithoutPass = new UserModel()
+        {
+            UserName = Configurator.ReadConfiguration().UserNameSauceDemo
+        };
 
-        Assert.That(LoginPage.ErrorTitle().Text, Is.EqualTo("Epic sadface: Password is required"));
+        Assert.That(
+            UserStep.UnsuccesfulLoginWithoutPassword(userWithoutPass)
+                .ErrorTitle()
+                .Text, Is.EqualTo("Epic sadface: Password is required"));
     }
 
     [Test]
     public void LoginWithoutUsernameAndPassword()
     {
-        LoginPage.Login();
-        Assert.That(LoginPage.ErrorTitle().Text, Is.EqualTo("Epic sadface: Username is required"));
+        Assert.That(UserStep
+            .UnsuccesfulLoginWithoutUserNameAndPassword()
+            .ErrorTitle()
+            .Text, Is.EqualTo("Epic sadface: Username is required"));
     }
 }
