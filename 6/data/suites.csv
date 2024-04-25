@@ -1,0 +1,6 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Apr 25 19:03:25 GMT 2024","Thu Apr 25 19:03:28 GMT 2024","2996","","","","PositiveTests","PositiveLogin","PositiveLogin",""
+"passed","Thu Apr 25 19:03:25 GMT 2024","Thu Apr 25 19:03:28 GMT 2024","2889","","","","NegativeTests","LoginWithoutPassword","LoginWithoutPassword",""
+"broken","Thu Apr 25 19:03:27 GMT 2024","Thu Apr 25 19:03:28 GMT 2024","776","","","","NegativeTests","LoginWithoutUsernameAndPassword","LoginWithoutUsernameAndPassword",""
+"passed","Thu Apr 25 19:03:25 GMT 2024","Thu Apr 25 19:03:27 GMT 2024","2491","","","","PositiveTests","AddProjectTest","AddProjectTest",""
+"passed","Thu Apr 25 19:03:25 GMT 2024","Thu Apr 25 19:03:43 GMT 2024","18282","","","","PositiveTests","NavigateToProductsTest","NavigateToProductsTest",""
