@@ -12,6 +12,7 @@ public class DriverFactory
     {
         var chromeOptions = new ChromeOptions();
         chromeOptions.AddArgument("--incognito");
+        chromeOptions.AddArgument("--remote-debugging-pipe");
 
         new DriverManager().SetUpDriver(new ChromeConfig());
         return new ChromeDriver(chromeOptions);
