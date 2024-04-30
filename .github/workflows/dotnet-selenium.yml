@@ -1,11 +1,17 @@
 name: Selenium tests
 
 on:
-  push:
-    branches: [ "CiCd" ]
-
+  workflow_dispatch:
+   inputs:
+    test_category:
+     description: 'Select Test Category'
+     type: choice
+     options:
+     - Positive
+     - Negative
+     required: true
+     
 jobs:
-
   build:
 
     strategy:
