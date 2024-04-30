@@ -1,8 +1,15 @@
 name: Selenium tests
 
 on:
-  push:
-    branches: [ "CiCd" ]
+  workflow_dispatch:
+   inputs:
+    test_category:
+     description: 'Select Test Category'
+     type: choice
+     options:
+     - Positive
+     - Negative
+     required: true
 
 jobs:
 
@@ -33,8 +40,13 @@ jobs:
         dotnet-version: 8.0.x
 
     # Execute all unit tests in the solution
-    - name: Execute Selenium tests
-      run: dotnet test
+    - name: Execute Positive Selenium tests
+      if:  "github.event.inputs.test_category == 'Positive'"
+      run: dotnet test --filter Category=Positive Test
+      
+    - name: Execute Negative Selenium tests
+      if:  "github.event.inputs.test_category == 'Positive'"
+      run: dotnet test --filter Category=Negative Test
 
     - name: Load test report history
       uses: actions/checkout@v3

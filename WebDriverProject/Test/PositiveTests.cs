@@ -15,6 +15,7 @@ public class PositiveTests : BaseTest
     }
 
     [Test]
+    [Category("Positive Test")]
     public void PositiveLogin()
     {
         var admin = new UserModel()
@@ -29,6 +30,8 @@ public class PositiveTests : BaseTest
 
 
     [Test]
+    [Category("Positive Test")]
+
     public void NavigateToProductsTest()
     {
         var admin = new UserModel()
@@ -40,19 +43,5 @@ public class PositiveTests : BaseTest
         UserStep.SuccessfulLogin(admin).CartIcon().Click();
 
         NavigationStep.NavigateToProductsPage();
-    }
-
-    [Test]
-    public void AddProjectTest()
-    {
-
-        var project = new ProjectModel()
-        {
-            Name = "ASciapaniuk_" + Guid.NewGuid(),
-            Announcement = "Test",
-            IsShowAnnouncement = true,
-            ProjectType = "Use a single repository with baseline support",
-            IsEnableTestCase = true
-        };
     }
 }
