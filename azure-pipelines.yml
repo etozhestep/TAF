@@ -27,4 +27,4 @@ steps:
   displayName: Publish Report
   inputs:
     allureVersion: 2.27.0
-    testResultsDir: WebDriverProject/bin/Debug/net6.0/allure-results
+    testResultsDir: C:\Users\Andrei_Stsiapaniuk\agent\_work\1\s\WebDriverProject\bin\Debug\net6.0\allure-results
