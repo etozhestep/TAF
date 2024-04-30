@@ -41,11 +41,11 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute Positive Selenium tests
-      if:  "github.event.inputs.test_category == 'Positive'"
+      if:  ${{ github.event.inputs.test_category }} == 'Positive'
       run: dotnet test --filter Category=Positive Test
       
     - name: Execute Negative Selenium tests
-      if:  "github.event.inputs.test_category == 'Positive'"
+      if:  ${{ github.event.inputs.test_category }} == 'Negative'
       run: dotnet test --filter Category=Negative Test
 
     - name: Load test report history
