@@ -12,10 +12,10 @@ public class DriverFactory
     {
         var chromeOptions = new ChromeOptions();
         chromeOptions.AddArgument("--incognito");
-        chromeOptions.AddArguments("--headless");
+        //chromeOptions.AddArguments("--headless");
         chromeOptions.AddArguments("--disable-gpu");
         chromeOptions.AddArguments("--disable-extensions");
-        chromeOptions.AddArgument("--remote-debugging-pipe");
+        //chromeOptions.AddArgument("--remote-debugging-pipe");
 
         new DriverManager().SetUpDriver(new ChromeConfig());
         return new ChromeDriver(chromeOptions);
