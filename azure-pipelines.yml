@@ -6,6 +6,8 @@
 trigger:
 - CiCd
 
+pool: Default
+
 
 variables:
   solution: '**/*.sln'
