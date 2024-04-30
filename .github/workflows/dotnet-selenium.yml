@@ -1,8 +1,16 @@
 name: Selenium tests
 
-on:
-  push:
-    branches: [ "CiCd" ]
+on: 
+  workflow_dispatch:
+   inputs:
+    test_category:
+     description: 'Select test category'
+     type: choice
+     options:
+     - Positive
+     - Negative
+   required: true
+  
 
 jobs:
 
@@ -13,12 +21,6 @@ jobs:
         configuration: [Debug]
 
     runs-on: ubuntu-latest  
-
-    env:
-      Solution_Name: your-solution-name                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: your-wap-project-directory-name    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
     steps:
     - name: Checkout Repo
@@ -33,7 +35,12 @@ jobs:
         dotnet-version: 8.0.x
 
     # Execute all unit tests in the solution
-    - name: Execute Selenium tests
+    - name: Execute Positive tests
+      if: github.event.inputs.test_category == 'Positive'
+      run: dotnet test
+      
+    - name: Execute Negative tests
+      if: github.event.inputs.test_category == 'Negative'
       run: dotnet test
 
     - name: Load test report history
