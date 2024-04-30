@@ -22,10 +22,9 @@ jobs:
     runs-on: ubuntu-latest  
 
     env:
-      Solution_Name: your-solution-name                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: your-wap-project-directory-name    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Solution_Name: WebDriverProject.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
+      Test_Project_Path: WebDriverProject\WebDriverProject.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+    
 
     steps:
     - name: Checkout Repo
@@ -42,11 +41,11 @@ jobs:
     # Execute all unit tests in the solution
     - name: Execute Positive Selenium tests
       if:  "github.event.inputs.test_category == 'Positive'"
-      run: dotnet test --filter Category=Positive Test
+      run: dotnet test  ${{ env.Test_Project_Path }} --filter Category=Positive Test
       
     - name: Execute Negative Selenium tests
       if:  "github.event.inputs.test_category == 'Negative'"
-      run: dotnet test --filter Category=Negative Test
+      run: dotnet test  ${{ env.Test_Project_Path }} --filter Category=Negative Test
 
     - name: Load test report history
       uses: actions/checkout@v3
