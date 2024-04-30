@@ -25,6 +25,7 @@ steps:
 
 - task: PublishAllureReport@1
   displayName: Publish Report
+  continueOnError: true
   inputs:
     allureVersion: 2.27.0
     testResultsDir: C:\Users\Andrei_Stsiapaniuk\agent\_work\1\s\WebDriverProject\bin\Debug\net6.0\allure-results
