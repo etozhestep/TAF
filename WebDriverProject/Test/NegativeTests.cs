@@ -13,7 +13,7 @@ public class NegativeTests : BaseTest
     }
 
     [Test]
-    [Category("Negative Test")]
+    [Category("Negative")]
     public void LoginWithoutPassword()
     {
         var userWithoutPass = new UserModel()
@@ -28,7 +28,7 @@ public class NegativeTests : BaseTest
     }
 
     [Test]
-    [Category("Negative Test")]
+    [Category("Negative")]
     public void LoginWithoutUsernameAndPassword()
     {
         Assert.That(UserStep

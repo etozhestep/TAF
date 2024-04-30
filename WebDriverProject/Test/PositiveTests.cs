@@ -15,7 +15,7 @@ public class PositiveTests : BaseTest
     }
 
     [Test]
-    [Category("Positive Test")]
+    [Category("Positive")]
     public void PositiveLogin()
     {
         var admin = new UserModel()
@@ -30,7 +30,7 @@ public class PositiveTests : BaseTest
 
 
     [Test]
-    [Category("Positive Test")]
+    [Category("Positive")]
 
     public void NavigateToProductsTest()
     {
