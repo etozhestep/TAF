@@ -68,9 +68,6 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
 
-    - name: List files
-      run: ls -R
-
     - name: Publish artifacts
       uses: actions/upload-artifact@v3
       with:
