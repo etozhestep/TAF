@@ -14,7 +14,6 @@ public abstract class BasePage : LoadableComponent<BasePage>
         Driver = driver;
         if (openPageByUrl)
         {
-            //ExecuteLoad();
             Load();
         }
     }
