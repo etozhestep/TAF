@@ -15,7 +15,7 @@ public class DriverFactory
         chromeOptions.AddArguments("--headless");
         chromeOptions.AddArguments("--disable-gpu");
         chromeOptions.AddArguments("--disable-extensions");
-        chromeOptions.AddArgument("--remote-debugging-pipe");
+        //chromeOptions.AddArgument("--remote-debugging-pipe");
 
         new DriverManager().SetUpDriver(new ChromeConfig());
         return new ChromeDriver(chromeOptions);
