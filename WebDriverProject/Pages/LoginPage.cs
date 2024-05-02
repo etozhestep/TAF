@@ -11,7 +11,7 @@ public class LoginPage : BasePage
     private readonly string _endPoint = "";
 
 
-    public LoginPage(IWebDriver driver) : base(driver)
+    public LoginPage(IWebDriver driver, bool openPageByUrl = false) : base(driver, openPageByUrl)
     {
     }
 
@@ -42,6 +42,13 @@ public class LoginPage : BasePage
 
     protected override bool EvaluateLoadedStatus()
     {
-        return LoginButton().Displayed;
+        try
+        {
+            return LoginButton().Displayed;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }

@@ -29,6 +29,13 @@ public class ProductsPage : BasePage
 
     protected override bool EvaluateLoadedStatus()
     {
-        return ProductsTitle().Displayed;
+        try
+        {
+            return ProductsTitle().Displayed;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
