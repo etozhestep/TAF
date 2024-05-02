@@ -1,32 +1,23 @@
-using BDD.Drivers;
 using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using WebDriverProject.Core;
+using WebDriverProject.Steps;
 
 namespace BDD.StepDefinitions;
 
 [Binding]
-public class FirstTestForLearningSpecFlowStepDefinitions
+public class FirstTestForLearningSpecFlowStepDefinitions : BaseStepDefs
 {
-    private Browser _browser;
-
-    public FirstTestForLearningSpecFlowStepDefinitions(Browser browser)
+    private NavigationStep _navigationStep;
+    public FirstTestForLearningSpecFlowStepDefinitions(Browser browser) : base(browser)
     {
-        _browser = browser;
+        _navigationStep = new NavigationStep(Driver);
     }
 
-    [Given(@"open browser")]
-    public void GivenOpenBrowser()
-    {
-        Console.WriteLine("Browser is started...");
-        _browser.Driver = new ChromeDriver();
-    }
 
     [Given(@"open login page")]
     public void WhenOpenLoginPage()
     {
-        Console.WriteLine("login page opened...");
-       _browser.Driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+        _navigationStep.NavigateToLoginPage();
     }
 
     [Then(@"username field is displayed")]

@@ -13,6 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDD", "BDD\BDD.csproj", "{17F2A19E-896B-48D7-875D-C3CA8CAB99A4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D125F679-2699-4BD5-8CCF-C7681385B93F} = {D125F679-2699-4BD5-8CCF-C7681385B93F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

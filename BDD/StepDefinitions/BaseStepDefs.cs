@@ -1,9 +1,15 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using WebDriverProject.Core;
 
 namespace BDD.StepDefinitions;
 
-public static class BaseStepDefs
+public class BaseStepDefs
 {
-    public static IWebDriver Driver;
+    protected IWebDriver Driver { get; }
+
+    public BaseStepDefs(Browser browser)
+    {
+        Driver = browser.Driver;
+    }
 }

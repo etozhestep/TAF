@@ -18,4 +18,9 @@ public class NavigationStep : BaseStep
     {
         return new ProductsPage(_driver, true);
     }
+
+    public LoginPage NavigateToLoginPage()
+    {
+        return new LoginPage(_driver);
+    }
 }
