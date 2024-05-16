@@ -11,11 +11,15 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Resources\testObject1.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\testObject1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
@@ -39,7 +43,6 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Models\" />
     <Folder Include="Pages\" />
     <Folder Include="Test\" />
   </ItemGroup>

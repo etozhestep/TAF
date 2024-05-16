@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using WebDriverProject.Core;
-using WebDriverProject.Pages;
 using WebDriverProject.Steps;
 
 namespace WebDriverProject.Test;
