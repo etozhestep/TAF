@@ -24,7 +24,7 @@ public class JsonTest
     [Test]
     public void SecondTest()
     {
-        var jsonAsString = " {\"Name\":\"Test Name\",\"LastName\":\"Test Last Name\",\"Id\":76,\"Age\":30}";
+        var jsonAsString = "{\"Name\":\"Test Name\",\"LastName\":\"Test Last Name\",\"Id\":76,\"Age\":30}";
 
         JsonObject1 jsonObject = JsonSerializer.Deserialize<JsonObject1>(jsonAsString);
 
