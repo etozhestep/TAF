@@ -49,7 +49,7 @@ public class PositiveTests : BaseTest
             Name = "ASciapaniuk_" + Guid.NewGuid(),
             Announcement = "Test",
             IsShowAnnouncement = true,
-            ProjectType = "Use a single repository with baseline support",
+            ProjectType = 1,
             IsEnableTestCase = true
         };
     }

@@ -4,13 +4,26 @@ namespace WebDriverProject.Models;
 
 public class ProjectModel
 {
-    public string Name { get; set; }
-    public string Announcement { get; set; }
+    [JsonPropertyName("id")] public int Id { get; set; }
+    [JsonPropertyName("name")] public string Name { get; set; }
+    [JsonPropertyName("announcement")] public string Announcement { get; set; }
+
+    [JsonPropertyName("show_announcement")]
     public bool? IsShowAnnouncement { get; set; }
-    public string ProjectType { get; set; }
+
+    [JsonPropertyName("suite_mode")] public int ProjectType { get; set; }
     public bool? IsEnableTestCase { get; set; }
-    [JsonPropertyName("name")] public string FirstPersoneName { get; set; }
-    [JsonPropertyName("last name")] public string SecondName { get; set; }
-    [JsonPropertyName("id")] public int Identifier { get; set; }
-    [JsonPropertyName("age")] public int Age { get; set; }
+
+    public override string ToString()
+    {
+        return $"{nameof(Id)}: {Id}, {nameof(Name)}: {Name}, {nameof(Announcement)}: {Announcement}, " +
+               $"{nameof(IsShowAnnouncement)}: {IsShowAnnouncement}, {nameof(ProjectType)}: {ProjectType}";
+    }
+
+    public bool Equals(ProjectModel projectModel)
+    {
+        return Name == projectModel.Name && Announcement == projectModel.Announcement &&
+               IsShowAnnouncement == projectModel.IsShowAnnouncement &&
+               ProjectType == projectModel.ProjectType;
+    }
 }

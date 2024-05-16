@@ -1,0 +1,14 @@
+{
+  "id": 214,
+  "name": "ASciapaniuk_1",
+  "announcement": "test",
+  "show_announcement": true,
+  "is_completed": false,
+  "completed_on": null,
+  "suite_mode": 1,
+  "default_role_id": null,
+  "case_statuses_enabled": false,
+  "url": "https:\/\/qac0403.testrail.io\/index.php?\/projects\/overview\/214",
+  "users": [],
+  "groups": []
+} 

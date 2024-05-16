@@ -58,7 +58,7 @@ public class JsonTest
     [Test]
     public void Validate()
     {
-        var projectModel = new ProjectModel()
+        /*var projectModel = new ProjectModel()
         {
             Age = 11,
             Announcement = "a",
@@ -69,6 +69,6 @@ public class JsonTest
             Name = "Name",
             ProjectType = "3",
             SecondName = "sec name"
-        };
+        };*/
     }
 }
