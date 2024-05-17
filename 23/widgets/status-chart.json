@@ -1,1 +1,0 @@
-[{"uid":"45c94333c193dcb3","name":"LoginWithoutPassword","time":{"start":1714496293496,"stop":1714496303371,"duration":9875},"status":"passed","severity":"normal"},{"uid":"28db8809367c2e3e","name":"LoginWithoutUsernameAndPassword","time":{"start":1714496293496,"stop":1714496303102,"duration":9606},"status":"broken","severity":"normal"}]
