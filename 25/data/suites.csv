@@ -1,3 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Apr 30 17:08:30 GMT 2024","Tue Apr 30 17:08:48 GMT 2024","17646","","","","PositiveTests","NavigateToProductsTest","NavigateToProductsTest",""
-"passed","Tue Apr 30 17:08:30 GMT 2024","Tue Apr 30 17:08:33 GMT 2024","2416","","","","PositiveTests","PositiveLogin","PositiveLogin",""
