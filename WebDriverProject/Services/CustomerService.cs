@@ -41,15 +41,14 @@ public class CustomerService
         return customersList;
     }
 
-    public int AddCustomerAndReturnId(Customers customers)
+    public Customers AddCustomerAndReturnModel(Customers customers)
     {
         var sqlQuery = $"INSERT INTO public.customer(firstname, lastname, email, age)" +
                        $"VALUES ('{customers.FirstName}', '{customers.LastName}', '{customers.Email}', '{customers.Age}');";
         _logger.Info(sqlQuery);
         var cmd = new NpgsqlCommand(sqlQuery, _connection);
         _logger.Info(cmd.ExecuteNonQuery());
-        var newCustomer = GetCustomerByModel(customers);
-        return newCustomer!.Id;
+        return GetCustomerByModel(customers);
     }
 
     public Customers? GetCustomerById(int id)

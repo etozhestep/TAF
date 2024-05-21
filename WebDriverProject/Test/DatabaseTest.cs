@@ -25,22 +25,22 @@ public class DatabaseTest
     [Test]
     public void AddCustomerTest()
     {
-        var customer = new Customers()
+        var expectedCustomer = new Customers()
         {
             FirstName = "Ted",
             LastName = "Thor",
             Email = "tt@test.com",
             Age = 42
         };
-
-        Assert.That(_customerService.AddCustomerAndReturnId(customer) == 13);
+        var actualCustomer = _customerService.AddCustomerAndReturnModel(expectedCustomer);
+        Assert.That(actualCustomer.Equals(expectedCustomer));
     }
 
     [Test]
     public void RemoveCustomerTest()
     {
-        _customerService.DeleteCustomerById(10);
-        Assert.That(_customerService.GetCustomerById(10) == null);
+        _customerService.DeleteCustomerById(14);
+        Assert.That(_customerService.GetCustomerById(14) == null);
     }
 
     [Test]
