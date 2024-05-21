@@ -11,14 +11,14 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
-    <None Remove="NLog.config.old" />
+    <None Remove="NLog.config" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="NLog.config.old">
+    <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -28,6 +28,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="NLog" Version="5.2.8" />
     <PackageReference Include="NLog.Schema" Version="5.2.8" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
     <PackageReference Include="NUnit" Version="4.1.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="NUnit.Analyzers" Version="4.1.0">
@@ -46,6 +47,8 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
+    <Folder Include="Models\" />
+    <Folder Include="Services\" />
     <Folder Include="Pages\" />
     <Folder Include="Test\" />
   </ItemGroup>
