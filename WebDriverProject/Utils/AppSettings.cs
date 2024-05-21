@@ -7,4 +7,5 @@ public class AppSettings
     public string SauceDemoUrl { get; set; }
     public string UserNameSauceDemo { get; set; }
     public string PasswordSauceDemo { get; set; }
+    public DbSettings DbSettings { get; set; }
 }

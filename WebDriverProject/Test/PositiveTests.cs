@@ -23,7 +23,6 @@ public class PositiveTests : BaseTest
             UserName = Configurator.ReadConfiguration().UserNameSauceDemo,
             Password = Configurator.ReadConfiguration().PasswordSauceDemo
         };
-
         Assert.That(UserStep.SuccessfulLogin(admin)
             .ProductsTitle().Displayed, Is.True);
     }
@@ -31,7 +30,6 @@ public class PositiveTests : BaseTest
 
     [Test]
     [Category("Positive")]
-
     public void NavigateToProductsTest()
     {
         var admin = new UserModel()
