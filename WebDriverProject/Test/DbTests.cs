@@ -1,5 +1,4 @@
-﻿using Npgsql;
-using WebDriverProject.Connector;
+﻿using WebDriverProject.Connector;
 using WebDriverProject.Models;
 using WebDriverProject.Services;
 
@@ -51,7 +50,7 @@ public class DbTests
     [Test]
     public void DeleteCustomerTest()
     {
-       
+
         _customerService.DeleteCustomerById(4);
     }
 

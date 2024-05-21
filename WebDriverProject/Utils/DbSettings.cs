@@ -8,4 +8,4 @@ public class DbSettings
     public string DB_Name { get; set; }
     public string DB_Username { get; set; }
     public string DB_Password { get; set; }
-}   
+}

@@ -1,6 +1,4 @@
-﻿using OpenQA.Selenium.DevTools.V121.Audits;
-using WebDriverProject.Models;
-using WebDriverProject.Pages;
+﻿using WebDriverProject.Models;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;

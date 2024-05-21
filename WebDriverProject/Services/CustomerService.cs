@@ -1,5 +1,4 @@
 ﻿using Npgsql;
-using NUnit.Framework.Internal;
 using WebDriverProject.Models;
 
 namespace WebDriverProject.Services;

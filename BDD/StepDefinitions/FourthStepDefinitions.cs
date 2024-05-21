@@ -1,6 +1,4 @@
-using System;
 using NUnit.Framework;
-using TechTalk.SpecFlow;
 
 namespace BDD.StepDefinitions
 {
