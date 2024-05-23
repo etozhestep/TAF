@@ -3,13 +3,15 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Net;
 using System.Text.Json;
+using WebDriverProject.BaseEntites;
 using WebDriverProject.Models;
 using WebDriverProject.Services;
+using WebDriverProject.Services.API;
 using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test.API;
 
-public class TestRailTest
+public class TestRailTest : BaseApiTest
 {
     private Logger _logger = LogManager.GetCurrentClassLogger();
 
@@ -33,12 +35,10 @@ public class TestRailTest
         const string endPoint = "/index.php?/api/v2/get_user/{user_id}";
 
 
-
-
         var request = new RestRequest(endPoint);
         request.AddUrlSegment("user_id", 1);
 
-        var response = client.ExecuteGet(request);
+        var response = Client.ExecuteGet(request);
 
         _logger.Info(response.Content);
         Assert.That(response.StatusCode == HttpStatusCode.OK);
