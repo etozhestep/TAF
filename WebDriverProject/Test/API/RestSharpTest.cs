@@ -3,7 +3,7 @@ using NLog;
 using RestSharp;
 using WebDriverProject.Utils;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.Test.API;
 
 public class RestSharpTest
 {

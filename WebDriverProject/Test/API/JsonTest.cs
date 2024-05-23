@@ -2,7 +2,7 @@
 using System.Text.Json.Nodes;
 using WebDriverProject.Models;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.Test.API;
 
 public class JsonTest
 {
@@ -17,7 +17,7 @@ public class JsonTest
             Age = 30
         };
 
-        var jsonAsString = JsonSerializer.Serialize<JsonObject1>(json);
+        var jsonAsString = JsonSerializer.Serialize(json);
         Console.WriteLine(jsonAsString);
     }
 

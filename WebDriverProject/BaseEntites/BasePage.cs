@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using WebDriverProject.Utils;
 
-namespace WebDriverProject.Pages;
+namespace WebDriverProject.BaseEntites;
 
 public abstract class BasePage : LoadableComponent<BasePage>
 {

@@ -5,7 +5,7 @@ using RestSharp.Authenticators;
 using WebDriverProject.Utils;
 using WebDriverProject.Models;
 
-namespace WebDriverProject.Services;
+namespace WebDriverProject.Services.API;
 
 public class ApiServices
 {

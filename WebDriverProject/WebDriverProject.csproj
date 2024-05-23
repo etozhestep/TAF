@@ -51,9 +51,8 @@
 
   <ItemGroup>
     <Folder Include="Core\" />
-    <Folder Include="Services\" />
     <Folder Include="Pages\" />
-    <Folder Include="Test\" />
+    <Folder Include="Services\DB\" />
   </ItemGroup>
 
 </Project>

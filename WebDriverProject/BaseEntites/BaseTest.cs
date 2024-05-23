@@ -4,7 +4,7 @@ using DotNetEnv;
 using WebDriverProject.Core;
 using WebDriverProject.Steps;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.BaseEntites;
 
 [Parallelizable(ParallelScope.All)]
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]

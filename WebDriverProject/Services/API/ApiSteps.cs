@@ -3,7 +3,7 @@ using RestSharp;
 using WebDriverProject.Models;
 using WebDriverProject.Utils;
 
-namespace WebDriverProject.Services;
+namespace WebDriverProject.Services.API;
 
 public class ApiSteps
 {

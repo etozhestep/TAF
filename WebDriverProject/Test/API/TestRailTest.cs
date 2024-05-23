@@ -7,7 +7,7 @@ using WebDriverProject.Models;
 using WebDriverProject.Services;
 using WebDriverProject.Utils;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.Test.API;
 
 public class TestRailTest
 {
@@ -31,15 +31,9 @@ public class TestRailTest
     public void AdvancedGetTest()
     {
         const string endPoint = "/index.php?/api/v2/get_user/{user_id}";
-        var restOption = new RestClientOptions(Configurator.ReadConfiguration().TestRailBaseUrl)
-        {
-            Authenticator = new HttpBasicAuthenticator(
-                Configurator.ReadConfiguration().Email,
-                Configurator.ReadConfiguration().Password
-            )
-        };
 
-        var client = new RestClient(restOption);
+
+
 
         var request = new RestRequest(endPoint);
         request.AddUrlSegment("user_id", 1);

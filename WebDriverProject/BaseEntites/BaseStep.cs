@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace WebDriverProject.Steps;
+namespace WebDriverProject.BaseEntites;
 
 public class BaseStep
 {

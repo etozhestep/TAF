@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using WebDriverProject.BaseEntites;
 using WebDriverProject.Models;
 using WebDriverProject.Pages;
 

@@ -1,7 +1,8 @@
-﻿using WebDriverProject.Models;
+﻿using WebDriverProject.BaseEntites;
+using WebDriverProject.Models;
 using WebDriverProject.Utils;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.Test.UI;
 
 [TestFixture]
 public class NegativeTests : BaseTest

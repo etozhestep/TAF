@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.Test.API;
 
 public class HttpClientTest
 {

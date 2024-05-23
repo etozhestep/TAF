@@ -1,7 +1,8 @@
-﻿using WebDriverProject.Models;
+﻿using WebDriverProject.BaseEntites;
+using WebDriverProject.Models;
 using WebDriverProject.Utils;
 
-namespace WebDriverProject.Test;
+namespace WebDriverProject.Test.UI;
 
 [TestFixture]
 public class PositiveTests : BaseTest
@@ -10,7 +11,6 @@ public class PositiveTests : BaseTest
     public void Setup()
     {
         Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
-
     }
 
     [Test]
