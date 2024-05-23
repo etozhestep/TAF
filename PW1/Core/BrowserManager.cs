@@ -10,7 +10,10 @@ public class BrowserManager
     public async Task InitializeAsync()
     {
         var playwright = await Playwright.CreateAsync();
-        Browser = await playwright.Chromium.LaunchAsync();
+        Browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions()
+        {
+            Headless = false
+        });
         Page = await Browser.NewPageAsync();
     }
 

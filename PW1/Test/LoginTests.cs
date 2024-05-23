@@ -1,4 +1,5 @@
-﻿using WebDriverProject.Utils;
+﻿using Microsoft.Playwright;
+using WebDriverProject.Utils;
 
 namespace PW1.Test;
 
@@ -8,10 +9,10 @@ public class LoginTests : BaseTest
     [Test]
     public async Task LoginWithCorrectCredentials()
     {
+        await LoginPage.NavigateAsync();
         var productPage = await LoginPage.LoginAsync(Configurator.ReadConfiguration().UserNameSauceDemo,
             Configurator.ReadConfiguration().PasswordSauceDemo);
-        var productTitle = await productPage.ProductTitle();
-        var isProductTitleDisplayed = await productTitle.IsVisibleAsync();
-        Assert.That(isProductTitleDisplayed);
+        await Assertions.Expect(BrowserManager.Page.Locator(productPage.ProductTitleSelector))
+            .ToBeVisibleAsync();
     }
 }

@@ -7,7 +7,7 @@ namespace PW1.Page;
 public class ProductsPage : BasePage
 {
     private string _endpoint = "inventory.html";
-    private string _productTitleSelector = "xpath=//*[.='Products']";
+    public string ProductTitleSelector = "xpath=//*[.='Products']";
 
     public ProductsPage(IPage page) : base(page)
     {
@@ -20,6 +20,6 @@ public class ProductsPage : BasePage
 
     public async Task<IElementHandle?> ProductTitle()
     {
-        return await Page.QuerySelectorAsync(_productTitleSelector);
+        return await Page.QuerySelectorAsync(ProductTitleSelector);
     }
 }
