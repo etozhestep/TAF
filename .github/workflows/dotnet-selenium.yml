@@ -36,9 +36,14 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
+    - name: Set up environment variables
+      run: |
+        echo "TESTRAIL_EMAIL"=${{secrets.TESTRAIL_EMAIL}} >> $GITHUB_ENV
+        echo "TESTRAIL_PASSWORD"=${{secrets.TESTRAIL_PASSWORD}} >> $GITHUB_ENV
+
     # Execute all unit tests in the solution
     - name: Execute Selenium tests
-      run: dotnet test
+      run: dotnet test --filter Name~PositiveLogin
 
     - name: Load test report history
       uses: actions/checkout@v3

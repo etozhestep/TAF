@@ -10,6 +10,7 @@ public class PositiveTests : BaseTest
     public void Setup()
     {
         Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
+
     }
 
     [Test]
@@ -17,8 +18,8 @@ public class PositiveTests : BaseTest
     {
         var admin = new UserModel()
         {
-            UserName = Configurator.ReadConfiguration().UserNameSauceDemo,
-            Password = Configurator.ReadConfiguration().PasswordSauceDemo
+            UserName = Environment.GetEnvironmentVariable("TESTRAIL_EMAIL"),
+            Password = Environment.GetEnvironmentVariable("TESTRAIL_PASSWORD")
         };
 
         Assert.That(UserStep.SuccessfulLogin(admin)
