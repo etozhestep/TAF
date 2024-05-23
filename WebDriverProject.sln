@@ -12,7 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\dotnet-selenium.yml = .github\workflows\dotnet-selenium.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDD", "BDD\BDD.csproj", "{17F2A19E-896B-48D7-875D-C3CA8CAB99A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BDD", "BDD\BDD.csproj", "{17F2A19E-896B-48D7-875D-C3CA8CAB99A4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D125F679-2699-4BD5-8CCF-C7681385B93F} = {D125F679-2699-4BD5-8CCF-C7681385B93F}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PW1", "PW1\PW1.csproj", "{AEB7804F-F056-4141-BACA-0F98277FB3B0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D125F679-2699-4BD5-8CCF-C7681385B93F} = {D125F679-2699-4BD5-8CCF-C7681385B93F}
 	EndProjectSection
@@ -31,6 +36,10 @@ Global
 		{17F2A19E-896B-48D7-875D-C3CA8CAB99A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17F2A19E-896B-48D7-875D-C3CA8CAB99A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17F2A19E-896B-48D7-875D-C3CA8CAB99A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEB7804F-F056-4141-BACA-0F98277FB3B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEB7804F-F056-4141-BACA-0F98277FB3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEB7804F-F056-4141-BACA-0F98277FB3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEB7804F-F056-4141-BACA-0F98277FB3B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
