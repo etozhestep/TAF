@@ -38,8 +38,8 @@ jobs:
 
     - name: Set up environment variables
       run: |
-        echo "TESTRAIL_EMAIL"=${{secrets.TESTRAIL_EMAIL}} >> $GITHUB_ENV
-        echo "TESTRAIL_PASSWORD"=${{secrets.TESTRAIL_PASSWORD}} >> $GITHUB_ENV
+        echo "TESTRAIL_EMAIL=${{secrets.TESTRAIL_EMAIL}}" >> $GITHUB_ENV
+        echo "TESTRAIL_PASSWORD=${{secrets.TESTRAIL_PASSWORD}}" >> $GITHUB_ENV
 
     # Execute all unit tests in the solution
     - name: Execute Selenium tests

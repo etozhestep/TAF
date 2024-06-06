@@ -38,13 +38,13 @@ public class PositiveTests : BaseTest
 
         UserStep.SuccessfulLogin(admin).CartIcon().Click();
 
-        NavigationStep.NavigateToProductsPage();
+       NavigationStep.NavigateToProductsPage();
+       ProductsPage.ProductsTitle();
     }
 
     [Test]
     public void AddProjectTest()
     {
-
         var project = new ProjectModel()
         {
             Name = "ASciapaniuk_" + Guid.NewGuid(),

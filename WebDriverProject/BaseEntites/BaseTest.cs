@@ -3,16 +3,20 @@ using System.Reflection;
 using DotNetEnv;
 using WebDriverProject.Core;
 using WebDriverProject.Steps;
+using WebDriverProject.Pages;
 
 namespace WebDriverProject.BaseEntites;
 
 [Parallelizable(ParallelScope.All)]
 [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
-public class BaseTest
+public class BaseTest : BaseApiTest
 {
     public IWebDriver Driver { get; set; }
     public UserStep UserStep { get; set; }
     public NavigationStep NavigationStep { get; set; }
+    protected LoginPage LoginPage;
+    protected ProductsPage ProductsPage;
+
 
     [OneTimeSetUp]
     public static void SetupEnvVariables()
@@ -26,8 +30,12 @@ public class BaseTest
     public void Setup()
     {
         Driver = new Browser().Driver;
+        //Steps
         UserStep = new UserStep(Driver);
         NavigationStep = new NavigationStep(Driver);
+        //Page
+        LoginPage = new LoginPage(Driver);
+        ProductsPage = new ProductsPage(Driver);
     }
 
     [TearDown]

@@ -18,9 +18,8 @@ public class BaseApiTest
         ApiServices = new ApiServices();
         ApiSteps = new ApiSteps();
 
-        _restOption = ApiServices.CreateOptions(Configurator.ReadConfiguration().Email,
+        Client = ApiServices.SetUpClientWithOptions(Configurator.ReadConfiguration().Email,
             Configurator.ReadConfiguration().Password);
-        Client = ApiServices.SetUpClient(_restOption);
     }
 
     [TearDown]

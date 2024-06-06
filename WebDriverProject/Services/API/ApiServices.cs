@@ -1,15 +1,12 @@
-﻿using OpenQA.Selenium.DevTools.V121.Debugger;
-using RestSharp;
-using System.Net;
+﻿using RestSharp;
 using RestSharp.Authenticators;
 using WebDriverProject.Utils;
-using WebDriverProject.Models;
 
 namespace WebDriverProject.Services.API;
 
 public class ApiServices
 {
-    public RestClient SetUpClient(RestClientOptions options)
+    private RestClient SetUpClient(RestClientOptions options)
     {
         return new RestClient(options);
     }
@@ -24,11 +21,25 @@ public class ApiServices
         return client.ExecutePost(new RestRequest(endPoint).AddJsonBody(body));
     }
 
-    public RestClientOptions CreateOptions(string email, string password)
+    public RestResponse CreatePostRequest(string endPoint, RestClient client, string headerValue, string headerName)
+    {
+        return client.ExecutePost(new RestRequest(endPoint).AddHeader(headerName, headerValue));
+    }
+
+    private RestClientOptions CreateOptions(string email, string password)
     {
         return new RestClientOptions(Configurator.ReadConfiguration().TestRailBaseUrl)
         {
             Authenticator = new HttpBasicAuthenticator(email, password)
         };
+    }
+
+    public RestClient SetUpClientWithOptions(string email, string password)
+    {
+        var options = new RestClientOptions(Configurator.ReadConfiguration().TestRailBaseUrl)
+        {
+            Authenticator = new HttpBasicAuthenticator(email, password)
+        };
+        return SetUpClient(options);
     }
 }

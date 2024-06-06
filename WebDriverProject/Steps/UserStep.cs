@@ -7,12 +7,9 @@ namespace WebDriverProject.Steps;
 
 public class UserStep : BaseStep
 {
-    private LoginPage _loginPage;
 
     public UserStep(IWebDriver driver) : base(driver)
     {
-        _driver = driver;
-        _loginPage = new LoginPage(driver);
     }
 
     public ProductsPage SuccessfulLogin(UserModel userModel)
@@ -24,28 +21,28 @@ public class UserStep : BaseStep
     public LoginPage UnsuccesfulLoginWithoutPassword(UserModel userModel)
     {
         Login(userModel);
-        return _loginPage;
+        return LoginPage;
     }
 
     public LoginPage UnsuccesfulLoginWithoutUserNameAndPassword()
     {
         Login();
-        return _loginPage;
+        return LoginPage;
     }
 
     private void Login(UserModel userModel = null)
     {
         if (userModel.UserName == null)
-            _loginPage.UserNameField().SendKeys("");
+            LoginPage.UserNameField().SendKeys("");
         else
-            _loginPage.UserNameField().SendKeys(userModel.UserName);
+            LoginPage.UserNameField().SendKeys(userModel.UserName);
 
 
         if (userModel.Password == null)
-            _loginPage.PasswordField().SendKeys("");
+            LoginPage.PasswordField().SendKeys("");
         else
-            _loginPage.PasswordField().SendKeys(userModel.Password);
+            LoginPage.PasswordField().SendKeys(userModel.Password);
 
-        _loginPage.LoginButton().Click();
+        LoginPage.LoginButton().Click();
     }
 }
