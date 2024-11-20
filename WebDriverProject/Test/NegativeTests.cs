@@ -1,45 +1,37 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using NLog;
+using WebDriverProject.Utils;
 
 namespace WebDriverProject.Test;
 
+[TestFixture]
 public class NegativeTests : BaseTest
 {
-    private const string Url = "https://www.saucedemo.com/";
-    private string userNameXpathLocator = "//input[@data-test='username']";
-    private string passwordCssLocator = "[placeholder='Password']";
-    private string loginButtonCssLocator = ".submit-button.btn_action";
+    [SetUp]
+    public void Setup()
+    {
+        try
+        {
+            Driver.Navigate().GoToUrl(Configurator.ReadConfiguration().SauceDemoUrl);
+        }
+        catch (Exception e)
+        {
+           logger.Error(e,"Невозможно перейти на сайт");
+            throw;
+        }
+    }
 
     [Test]
     public void LoginWithoutPassword()
     {
-        var standartUserName = "standard_user";
-        var expectedErrorText = "Epic sadface: Password is required";
+        LoginPage.Login(Configurator.ReadConfiguration().UserNameSauceDemo);
 
-        Driver.Navigate().GoToUrl(Url);
-        var userNameField = Driver.FindElement(By.XPath(userNameXpathLocator));
-        var loginButton = Driver.FindElement(By.CssSelector(loginButtonCssLocator));
-
-        userNameField.SendKeys(standartUserName);
-        loginButton.Click();
-
-        var actualErrorText = Driver.FindElement(By.TagName("h3")).Text;
-
-        Assert.That(actualErrorText, Is.EqualTo(expectedErrorText));
+        Assert.That(LoginPage.ErrorTitle().Text, Is.EqualTo("Epic sadface: Password is required"));
     }
 
     [Test]
     public void LoginWithoutUsernameAndPassword()
     {
-        var expectedErrorText = "Epic sadface: Username is required";
-
-        Driver.Navigate().GoToUrl(Url);
-        var loginButton = Driver.FindElement(By.CssSelector(loginButtonCssLocator));
-
-        loginButton.Click();
-
-        var actualErrorText = Driver.FindElement(By.TagName("h3")).Text;
-
-        Assert.That(actualErrorText, Is.EqualTo(expectedErrorText));
+        LoginPage.Login();
+        Assert.That(LoginPage.ErrorTitle().Text, Is.EqualTo("Epic sadface: Username is required"));
     }
 }
